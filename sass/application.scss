@@ -1,0 +1,146 @@
+@font-face {
+  font-family: "Gotham MonoSpace";
+  src: url(../fonts/Gotham-MSN-NarrowBold.ttf) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  font-size: 24px;
+}
+
+body {
+  background: #141414;
+  color: #b3b3b3;
+  
+  font-family: "Gotham Narrow";
+  font-size: 1rem;
+}
+
+a {
+  cursor: pointer;
+}
+
+#center-container {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#counter-row {
+  width: 27.84rem;
+  height: 7.8rem;
+}
+
+#time-left {
+  font-weight: 900;
+  font-size: 9rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 0.8em;
+  width: 22.84rem;
+  position: relative;
+  float: left;
+
+  > * {
+    position: absolute;
+  }
+
+  #minutes-left, #seconds-left {
+    line-height: 0.85em;
+    height: 0.8em;
+    display: inline-block;
+    font-family: "Gotham MonoSpace";
+    font-weight: 700;
+  }
+
+  #minutes-left {
+    left: 0;
+    top: 0;
+  }
+
+  #colon {
+    left: 9.5rem;
+    line-height: 0.72em;
+    height: 0.8em;
+  }
+
+  #seconds-left {
+    left: 11.5rem;
+  }
+}
+
+#play-restart {
+  float: right;
+}
+
+#center-container {
+  margin-left: calc(50% - 11.42rem);
+
+  #play-restart {
+    display: inline-block;
+
+    > a {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  #summary-text {
+    font-size: 0.583rem;
+  }
+}
+
+#date-time-widget {
+  width: 129px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#clock-face {
+  width: 129px;
+  height: 129px;
+  position: relative;
+  background: url(../images/clock.png);
+  background-size: contain;
+
+  .hand {
+    position: absolute;
+    background: #808080;
+  }
+
+  #hour-hand {
+    width: 28.47%;
+    height: 7px;
+    top: 50%;
+    left: calc(50% - 8px);
+    transform-origin: 8px 3px;
+    border-radius: 4px;
+  }
+
+  #minute-hand {
+    width: 42.2%;
+    height: 3px;
+    top: calc(50% + 2px);
+    left: calc(50% - 10px);
+    transform-origin: 10px 1px;
+    border-radius: 1px;
+  }
+}
+
+#date-month {
+  text-align: center;
+}
+
+#date {
+  font-size: 2rem;
+  color: #808080;
+}
+#date,#month {
+  font-weight: 500;
+}
+#month {
+  color: #4d4d4d;
+  letter-spacing: -0.05em;
+}

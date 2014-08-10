@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="pomodoroApp">
+<head>
+  <title>Pomodoro</title>
+  <link rel="stylesheet" type="text/css" href="css/application.css">
+</head>
+
+<body ng-controller="CountDownCtrl" ng-keypress="toggleRunning($event)">
+
+<div id="date-time-widget">
+  <div id="clock-face">
+    <div id="hour-hand" class="hand" style="transform: rotate({{hourHandRotate}}deg);"></div>
+    <div id="minute-hand" class="hand" style="transform: rotate({{minuteHandRotate}}deg);"></div>
+  </div>
+  <div id="date-month">
+    <span id="date"></span><span id="month"></span>
+  </div>
+</div>
+
+<div id="center-container">
+
+  <div id="counter-row">
+    <div id="time-left">
+      <span id="minutes-left">{{minutesDisplayed()}}</span>
+      <span id="colon">:</span>
+      <span id="seconds-left">{{secondsDisplayed()}}</span>
+    </div>
+
+    <div style="clear: both;"></div>
+  </div>
+
+  <p id="summary-text">You have done <span></span> pomo for your task</p>
+</div>
+
+
+<script>
+  var monthNames = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" ];
+  var date = new Date();
+  document.querySelector('#date').innerHTML = date.getDate();
+  document.querySelector('#month').innerHTML = monthNames[date.getMonth()];  
+  
+</script>
+<script src="js/angular.min.js"></script>
+<script src="js/application.js"></script>
+</body>
+
+</html>
