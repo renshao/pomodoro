@@ -29,7 +29,7 @@
 </div>
 
 <div id="summary-text">
-  <div ng-show="pomodoro.numberOfPomos >= 0">You have completed <span class="number">{{pomodoro.numberOfPomos}}</span> pomodoros for your task.</div>
+  <div ng-show="pomodoro.numberOfPomos > 0">You have completed <span class="number">{{pomodoro.numberOfPomos}}</span> pomodoros for your task.</div>
   <div id="tomatos">
     <img src="images/tomato-small.png" ng-repeat="pomo in pomodoro.pomos()">
   </div>
