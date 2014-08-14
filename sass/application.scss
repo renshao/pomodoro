@@ -1,3 +1,5 @@
+@import "variables";
+
 @font-face {
   font-family: "Gotham MonoSpace";
   src: url(../fonts/Gotham-MSN-NarrowBold.ttf) format('truetype');
@@ -6,12 +8,12 @@
 }
 
 html {
-  font-size: 24px;
+  font-size: $body-font-size;
 }
 
 body {
-  background: #141414;
-  color: #b3b3b3;
+  background: $background-color;
+  color: $body-font-color;
   
   font-family: "Gotham Narrow";
   font-size: 1rem;
@@ -23,28 +25,36 @@ a {
 
 #center-container {
   position: absolute;
+  left: 50%;
   top: 50%;
-  transform: translate(0, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 43rem;
+  height: 43rem;
+  cursor: pointer;
 }
 
-#counter-row {
-  width: 27.84rem;
-  height: 7.8rem;
+#progress-circle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 #time-left {
   font-weight: 900;
-  font-size: 9rem;
+  font-size: 13.5rem;
+  margin-left: -0.95rem;
   margin-top: 0;
   margin-bottom: 0;
-  height: 0.8em;
-  width: 22.84rem;
-  position: relative;
-  float: left;
-
-  > * {
-    position: absolute;
-  }
+  line-height: 0.78em;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  display: inline-block;
 
   #minutes-left, #seconds-left {
     line-height: 0.85em;
@@ -55,47 +65,57 @@ a {
   }
 
   #minutes-left {
-    left: 0;
-    top: 0;
   }
 
   #colon {
-    left: 9.5rem;
-    line-height: 0.72em;
-    height: 0.8em;
+    position: relative;
+    top: -0.11em;
+    margin: 0 0.08em 0 0.1em;
+    height: 6rem;
   }
 
-  #seconds-left {
-    left: 11.5rem;
-  }
-}
-
-#play-restart {
-  float: right;
-}
-
-#center-container {
-  margin-left: calc(50% - 11.42rem);
-
-  #play-restart {
-    display: inline-block;
-
-    > a {
-      display: block;
-      text-align: center;
+  #reset-btn {
+    position: absolute;
+    line-height: 0.86em;
+    >img {
+      height: 2.9rem;
     }
   }
+}
 
+@media (max-width: 780px) {
   #summary-text {
-    font-size: 0.583rem;
+    display: none;
   }
+}
+
+#summary-text {
+  color: $light-gray;
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+
+  .number {
+    font-size: 1.618em;
+    color: $aqua;
+  }
+}
+
+#tomatos {
+  min-height: 2em;
 }
 
 #date-time-widget {
   width: 129px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 14px;
+  top: 14px;
+}
+
+@media (max-width: 780px) {
+  #date-time-widget {
+    display: none;
+  }
 }
 
 #clock-face {
@@ -107,10 +127,10 @@ a {
 
   .hand {
     position: absolute;
-    background: #808080;
   }
 
   #hour-hand {
+    background: $red;
     width: 28.47%;
     height: 7px;
     top: 50%;
@@ -120,6 +140,7 @@ a {
   }
 
   #minute-hand {
+    background: $aqua;
     width: 42.2%;
     height: 3px;
     top: calc(50% + 2px);
@@ -131,16 +152,18 @@ a {
 
 #date-month {
   text-align: center;
+  margin-top: 0.5rem;
 }
 
 #date {
-  font-size: 2rem;
-  color: #808080;
-}
-#date,#month {
+  color: $aqua;
   font-weight: 500;
 }
+#date,#month {
+  font-size: 1.618rem;
+}
 #month {
-  color: #4d4d4d;
+  color: $dark-gray;
   letter-spacing: -0.05em;
+  font-family: "Gotham XNarrow";
 }

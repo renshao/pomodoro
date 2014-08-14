@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="pomodoroApp">
 <head>
-  <title>Pomodoro</title>
+  <title>Poomodoro</title>
   <link rel="stylesheet" type="text/css" href="css/application.css">
 </head>
 
-<body ng-controller="CountDownCtrl" ng-keypress="toggleRunning($event)">
+<body ng-controller="CountDownCtrl" ng-keypress="keypressed($event)">
 
 <div id="date-time-widget">
   <div id="clock-face">
@@ -13,23 +13,26 @@
     <div id="minute-hand" class="hand" style="transform: rotate({{minuteHandRotate}}deg);"></div>
   </div>
   <div id="date-month">
-    <span id="date"></span><span id="month"></span>
+    <span id="date"></span> <span id="month"></span>
   </div>
 </div>
 
-<div id="center-container">
+<div id="center-container" ng-click="pomodoro.toggleRunning()">
+  <canvas id="progress-circle" width="601" height="601"></canvas>
 
-  <div id="counter-row">
-    <div id="time-left">
-      <span id="minutes-left">{{minutesDisplayed()}}</span>
-      <span id="colon">:</span>
-      <span id="seconds-left">{{secondsDisplayed()}}</span>
-    </div>
-
-    <div style="clear: both;"></div>
+  <div id="time-left">
+    <span id="minutes-left">{{pomodoro.minutesDisplayed()}}</span><!--
+    --><img id="colon" src="images/colon.png"><!--
+    --><span id="seconds-left">{{pomodoro.secondsDisplayed()}}</span>
+    <a id="reset-btn" ng-click="pomodoro.reset(); $event.stopPropagation();"><img src="images/reset.png"></a>
   </div>
+</div>
 
-  <p id="summary-text">You have done <span></span> pomo for your task</p>
+<div id="summary-text">
+  <div ng-show="pomodoro.numberOfPomos >= 0">You have completed <span class="number">{{pomodoro.numberOfPomos}}</span> pomodoros for your task.</div>
+  <div id="tomatos">
+    <img src="images/tomato-small.png" ng-repeat="pomo in pomodoro.pomos()">
+  </div>
 </div>
 
 
@@ -42,6 +45,8 @@
   
 </script>
 <script src="js/angular.min.js"></script>
+<script src="js/progress-circle.js"></script>
+<script src="js/pomodoro.js"></script>
 <script src="js/application.js"></script>
 </body>
 

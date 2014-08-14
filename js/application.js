@@ -1,7 +1,7 @@
 var app = angular.module('pomodoroApp', []);
 
 app.controller('CountDownCtrl', function ($scope, $interval) {
-  $scope.secondsLeft = 60 * 25;
+  $scope.pomodoro = new Pomodoro();
   $scope.runningProcess = null;
   $scope.hourHandRotate = 0;
   $scope.minuteHandRotate = 0;
@@ -19,36 +19,17 @@ app.controller('CountDownCtrl', function ($scope, $interval) {
     $scope.updateClockFace();
   }, 500);
 
-  $scope.minutesDisplayed = function() {
-    return pad(Math.floor(this.secondsLeft / 60), 2);
-  };
 
-  $scope.secondsDisplayed = function() {
-    return pad(this.secondsLeft % 60, 2);
-  };
-
-  $scope.countDownOneSecond = function() {
-    this.secondsLeft -= 1;
-  };
-
-  $scope.toggleRunning = function(event) {
+  $scope.keypressed = function(event) {
     var charCode = (typeof event.which === "number") ? event.which : event.keyCode;
-    if (charCode) {
-      if (this.runningProcess) {
-        $interval.cancel(this.runningProcess);
-        this.runningProcess = null;
-      } else {
-        this.runningProcess = $interval(function(){$scope.countDownOneSecond()}, 1000);
-      }
+    if (charCode === 32) {
+      this.pomodoro.toggleRunning();
+    } else if (charCode === 82 || charCode === 114) {
+      this.pomodoro.reset();
     }
   };
 
+  $scope.resetCounter = function() {
 
-
+  };
 });
-
-function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-}
