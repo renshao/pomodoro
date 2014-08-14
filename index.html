@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="pomodoroApp">
+<head>
+  <title>Poomodoro</title>
+  <link rel="stylesheet" type="text/css" href="css/application.css">
+</head>
+
+<body ng-controller="CountDownCtrl" ng-keypress="keypressed($event)">
+
+<div id="date-time-widget">
+  <div id="clock-face">
+    <div id="hour-hand" class="hand" style="transform: rotate({{hourHandRotate}}deg);"></div>
+    <div id="minute-hand" class="hand" style="transform: rotate({{minuteHandRotate}}deg);"></div>
+  </div>
+  <div id="date-month">
+    <span id="date"></span> <span id="month"></span>
+  </div>
+</div>
+
+<div id="center-container" ng-click="pomodoro.toggleRunning()">
+  <canvas id="progress-circle" width="601" height="601"></canvas>
+
+  <div id="time-left">
+    <span id="minutes-left">{{pomodoro.minutesDisplayed()}}</span><!--
+    --><img id="colon" src="images/colon.png"><!--
+    --><span id="seconds-left">{{pomodoro.secondsDisplayed()}}</span>
+    <a id="reset-btn" ng-click="pomodoro.reset(); $event.stopPropagation();"><img src="images/reset.png"></a>
+  </div>
+</div>
+
+<div id="summary-text">
+  <div ng-show="pomodoro.numberOfPomos >= 0">You have completed <span class="number">{{pomodoro.numberOfPomos}}</span> pomodoros for your task.</div>
+  <div id="tomatos">
+    <img src="images/tomato-small.png" ng-repeat="pomo in pomodoro.pomos()">
+  </div>
+</div>
+
+
+<script>
+  var monthNames = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" ];
+  var date = new Date();
+  document.querySelector('#date').innerHTML = date.getDate();
+  document.querySelector('#month').innerHTML = monthNames[date.getMonth()];  
+  
+</script>
+<script src="js/angular.min.js"></script>
+<script src="js/progress-circle.js"></script>
+<script src="js/pomodoro.js"></script>
+<script src="js/application.js"></script>
+</body>
+
+</html>

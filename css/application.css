@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Gotham MonoSpace";
+  src: url(../fonts/Gotham-MSN-NarrowBold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+html {
+  font-size: 14px; }
+
+body {
+  background: #141414;
+  color: #b3b3b3;
+  font-family: "Gotham Narrow";
+  font-size: 1rem; }
+
+a {
+  cursor: pointer; }
+
+#center-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 43rem;
+  height: 43rem;
+  cursor: pointer; }
+
+#progress-circle {
+  width: 100%;
+  height: 100%;
+  position: absolute; }
+
+#time-left {
+  font-weight: 900;
+  font-size: 13.5rem;
+  margin-left: -0.95rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 0.78em;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  display: inline-block; }
+  #time-left #minutes-left, #time-left #seconds-left {
+    line-height: 0.85em;
+    height: 0.8em;
+    display: inline-block;
+    font-family: "Gotham MonoSpace";
+    font-weight: 700; }
+  #time-left #colon {
+    position: relative;
+    top: -0.11em;
+    margin: 0 0.08em 0 0.1em;
+    height: 6rem; }
+  #time-left #reset-btn {
+    position: absolute;
+    line-height: 0.86em; }
+    #time-left #reset-btn > img {
+      height: 2.9rem; }
+
+@media (max-width: 780px) {
+  #summary-text {
+    display: none; } }
+#summary-text {
+  color: gray;
+  position: fixed;
+  left: 5px;
+  bottom: 5px; }
+  #summary-text .number {
+    font-size: 1.618em;
+    color: #69d7c6; }
+
+#tomatos {
+  min-height: 2em; }
+
+#date-time-widget {
+  width: 129px;
+  position: absolute;
+  right: 14px;
+  top: 14px; }
+
+@media (max-width: 780px) {
+  #date-time-widget {
+    display: none; } }
+#clock-face {
+  width: 129px;
+  height: 129px;
+  position: relative;
+  background: url(../images/clock.png);
+  background-size: contain; }
+  #clock-face .hand {
+    position: absolute; }
+  #clock-face #hour-hand {
+    background: #fd625e;
+    width: 28.47%;
+    height: 7px;
+    top: 50%;
+    left: calc(50% - 8px);
+    transform-origin: 8px 3px;
+    border-radius: 4px; }
+  #clock-face #minute-hand {
+    background: #69d7c6;
+    width: 42.2%;
+    height: 3px;
+    top: calc(50% + 2px);
+    left: calc(50% - 10px);
+    transform-origin: 10px 1px;
+    border-radius: 1px; }
+
+#date-month {
+  text-align: center;
+  margin-top: 0.5rem; }
+
+#date {
+  color: #69d7c6;
+  font-weight: 500; }
+
+#date, #month {
+  font-size: 1.618rem; }
+
+#month {
+  color: #4d4d4d;
+  letter-spacing: -0.05em;
+  font-family: "Gotham XNarrow"; }
